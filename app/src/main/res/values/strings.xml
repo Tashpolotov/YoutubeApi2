@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">YoutubeApi</string>
+    <string name="playlist">playlist</string>
+    <string name="youtube_api">Youtube_Api</string>
+    <string name="no_internet_connection">No Internet Connection</string>
+    <string name="try_again">Try again</string>
+    <string name="back">Back</string>
+    <string name="playlist1">Playlist</string>
+    <string name="youtube_api1">Youtube_Api</string>
+    <string name="video_series" />
+</resources>
