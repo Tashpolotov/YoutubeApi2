@@ -1,75 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.playlists.content.ActivityContent">
+    tools:context=".ui.playlists.content.ActivityContent"
+    android:fitsSystemWindows="true">
 
-
-    <include
-        android:id="@+id/include"
-        layout="@layout/toolbar"
-        app:layout_constraintTop_toTopOf="parent"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/main_appbar"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        />
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/appbarColor"
+        android:fitsSystemWindows="true"
+        android:nestedScrollingEnabled="true"
+       >
 
-    <LinearLayout
-        android:id="@+id/linear_layout"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/main_collaps"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:fitsSystemWindows="true">
+
+            <include
+                android:id="@+id/no_internet"
+                layout="@layout/internet"
+                android:visibility="gone"/>
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar" />
+
+            <LinearLayout
+                android:id="@+id/linear_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="48dp"
+                >
+
+                <TextView
+                    android:id="@+id/tv_content_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/emotional"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/notosans_regular"
+                    android:maxLines="2"
+                    android:layout_marginStart="10dp"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_content_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/in_this_series"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:maxLines="5"
+                    android:layout_marginStart="10dp"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/tv_video_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/notosans_regular"
+                    android:text="32_video_series"
+                    android:layout_marginTop="10dp"
+                    android:textSize="12sp"
+                    android:textColor="@color/textColoro"
+                    android:layout_marginStart="10dp"/>
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="196dp"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/include">
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        >
 
-        <TextView
-            android:id="@+id/tv_content_title"
-            android:layout_width="328dp"
-            android:text="Youtube_api"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="24dp" />
 
-        <TextView
-            android:id="@+id/tv_content_info"
-            android:layout_width="328dp"
-            android:text="Youtube_api"
-            android:textSize="20sp"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="8dp" />
-    </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_desc"
+            tools:listitem="@layout/itemplaylists"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            />
 
-    <TextView
-        android:id="@+id/tv_desc"
-        android:text="youtube_api"
-        android:textSize="18sp"
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear_layout" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_desc"
-        android:layout_marginTop="15dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:backgroundTint="@color/red"
+        android:src="@drawable/play_arrow"
+        app:layout_anchor="@id/main_appbar"
+        app:layout_anchorGravity="bottom|end"
         />
 
-    <ImageView
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="225dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/circle"
-        android:src="@drawable/play_arrow"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

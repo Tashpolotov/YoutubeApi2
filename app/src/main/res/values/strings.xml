@@ -8,4 +8,10 @@
     <string name="playlist1">Playlist</string>
     <string name="youtube_api1">Youtube_Api</string>
     <string name="video_series" />
+=======
+    <string name="emotional"><![CDATA[Emotional Well-being & Healing Practices for Children]]></string>
+    <string name="in_this_series">In this series, we break down the impact of displacement, instability, violence, and trauma in children, and offer exercises to support children in their healing journey.</string>
+    <string name="video">video</string>
+    <string name="video_series1">video_series</string>
+    >>>>>>> f0719dd (aaaaa)
 </resources>

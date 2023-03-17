@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             app:drawableStartCompat="@drawable/arrow_back"
             android:text="@string/back"
-            android:textSize="20sp"
+            android:gravity="center"
+            android:textSize="16sp"
             android:textColor="@color/red"
             />
 
@@ -26,6 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/playlist1"
+            android:textStyle="bold"
             android:textSize="20sp"
             android:textColor="@color/red"
             android:layout_marginStart="100dp"
